@@ -3,9 +3,43 @@ import { StyleSheet, Text, Image,TouchableOpacity, Button, View, Alert } from 'r
 //import { Button } from 'react-native-web';
 import  Top from './Components/toppart'
 import EnterAccount from './Components/EnterAccount';
- 
-export default function App() {
+//import { Client } from "twitter-api-sdk";
 
+
+export default function App() {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAOL%2BgwEAAAAAbaU08vZOfZc7dRwn5dO0uOBpEaw%3DGPV4sU2JhdbgD1XMt2EMqGhhgJMyVi15gXE7ZXv5FppMcfEmoD");
+    myHeaders.append("Cookie", "guest_id=v1%3A166386773258900618");
+    var response; 
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    var user_id = ''; 
+    fetch("https://api.twitter.com/2/users/by/username/ElonMusk", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+
+
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAOL%2BgwEAAAAAbaU08vZOfZc7dRwn5dO0uOBpEaw%3DGPV4sU2JhdbgD1XMt2EMqGhhgJMyVi15gXE7ZXv5FppMcfEmoD");
+      myHeaders.append("Cookie", "guest_id=v1%3A166386773258900618");
+      
+      var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+      };
+      //user_id = response.data.id; 
+      var getMentionsURL = ""; 
+      fetch("https://api.twitter.com/2/users/44196397/mentions?max_results=50", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+  
+  
   const confirmHandle = (InputText) =>{
   //connect to twitter and pull the data to detect bot
   //Implement here
@@ -18,7 +52,6 @@ export default function App() {
   }
   //Alert when account does not exist
   //implement here
-
   }
   return (      
     <View style={styles.container}>
