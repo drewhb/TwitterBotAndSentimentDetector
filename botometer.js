@@ -1,49 +1,56 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { useState, useEffect } from 'react'
 
-export default function App() {
+export function GetUser(userName) {
+  console.log("Running GET UserId for  " + userName)
+  const [user, setUser] = useState([]); 
 
-    let [score, setScore] = React.useState('')
-    let [handle, setHandle] = React.useState('')
+    //GET user ID
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAOL%2BgwEAAAAAbaU08vZOfZc7dRwn5dO0uOBpEaw%3DGPV4sU2JhdbgD1XMt2EMqGhhgJMyVi15gXE7ZXv5FppMcfEmoD");
+    myHeaders.append("Cookie", "guest_id=v1%3A166386773258900618");
 
-    const fetchApiCall = () => {
-      fetch("https://botometer-pro.p.rapidapi.com/4/check_account", {
-        "method": "POST",
-        "headers": {
-          "x-rapidapi-host": "botometer-pro.p.rapidapi.com",
-          "x-rapidapi-key": "ae92546582mshacaa08852bc7c87p135209jsn655208c2edca"
-        },
-        "User" : {
-          "screen_name": "ElonMusk"}
-      })
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    var getUserURL = "https://api.twitter.com/2/users/by/username/" + userName; 
+
+    useEffect(() => {
+      fetch(getUserURL, requestOptions)
         .then(response => response.json())
-        .then(response => {
-          console.log(response.content);
-          console.log(response.originator.name)
+        .then((resJson) => {
+          const user = resJson
+          setUser(user)
         })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-    return (
-      <View style={styles.container}>
-        <Text>Twitter Bot Detector!</Text>
-        <TouchableHighlight onPress={fetchApiCall}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Use Fetch API</Text>
-          </View>
-        </TouchableHighlight>
-        <StatusBar style="auto" />
-      </View>
-    );
+        .catch(error => console.log('error', error));
+    }, [])
+    console.log(user); 
+    //var userId = JSON.parse(user);
+    //userId = userId.user.data.id
+    return ({
+        user
+    })
 }
 
-const styles = StyleSheet.create({
-  container: {
-    fontSize: 35,
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  // var myHeaders = new Headers();
+  // myHeaders.append("Authorization", "Bearer AAAAAAAAAAAAAAAAAAAAAOL%2BgwEAAAAAbaU08vZOfZc7dRwn5dO0uOBpEaw%3DGPV4sU2JhdbgD1XMt2EMqGhhgJMyVi15gXE7ZXv5FppMcfEmoD");
+  // myHeaders.append("Cookie", "guest_id=v1%3A166386773258900618");
+  
+  // var requestOptions = {
+  //   method: 'GET',
+  //   headers: myHeaders,
+  //   redirect: 'follow'
+  // };
+
+
+
+  // //user_id = response.data.id; 
+  // var getMentionsURL = ""; 
+  // fetch("https://api.twitter.com/2/users/44196397/mentions?max_results=50", requestOptions)
+  //   .then(response => response.text())
+  //   //.then(result => console.log(result))
+  //   .catch(error => console.log('error', error));
+
