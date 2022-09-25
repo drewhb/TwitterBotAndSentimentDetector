@@ -7,6 +7,7 @@ import EnterAccount from './Components/EnterAccount';
 //import { Client } from "twitter-api-sdk";
 import { GetUser } from './botometer';
 import { useState, useEffect } from 'react'
+import Bottom from './Components/Bottompart';
 
 
 
@@ -25,8 +26,16 @@ export default function App() {
         [{text: 'OK', onPress: () => console.log('alert closed')}])
       }
       //Alert when account does not exis
-      //implement her
+
+     
+      //implement here
       setUser(InputText); 
+
+       //Display Acount Bot Score, implement score data here.
+
+       Alert.alert(InputText,"His or Her bot score is 0/5",[
+        {text:'Nice!',onpress: () => console.log('Check complete')}
+       ])
     }
 
   console.log(GetUser(user)); 
@@ -35,8 +44,9 @@ export default function App() {
       <Top style = {styles.Header}/>
       
       <Image source={require("./assets/background2.png")} style={styles.BackgroundImage}/> 
-      <EnterAccount confirmHandle ={confirmHandle}
-      />
+      
+      <EnterAccount confirmHandle ={confirmHandle}/>
+      <Bottom/>
       <StatusBar style="auto" />
     </View>
     
@@ -63,6 +73,8 @@ const styles = StyleSheet.create({
     marginTop: 100,
     fontWeight:'bold'
   }
+
+
 });
 
 
