@@ -8,4 +8,14 @@ The second set was the rapidAPI calls to the Botomoter API which would allow us 
 Currently our app can be run on iPhone and allows the user to enter a handle. After they enter the handle there is a bug where it doesn't immediatly return the entered user. Since the code is run through a digital emulator app which actively refreshes as we make changes to the code, it will return the enterned user only after a change is made in the code forcing the app to reestablish a connection. I believe this is a bug in using react native and our struggles with it held us back in fully completing our goals on time. That being said we learned a lot about using github as well as best practices for full stack application design as this will be an essential aspect of our upcoming senior design projects. 
 
 ## To Use the App
-Clone the repository: 
+1. Clone the repository: https://github.com/drewhb/TwitterBotAndSentimentDetector
+
+2. Open up the project in any code editor and from terminal navigate to the project
+
+3. Run "yarn start" and scan the QR code on your iPhone (You may need to install yarn)
+
+4. Enter a Twitter User Name and click confirm
+
+5. In the App.js file make an arbitrary change to the code (like add an empty new line) and the console will log the user you had previously entered
+    - Since we couldn't successfully parse the JSON in react, this disallowed us from exersizing the other endpoints which required UserId as the main parameter
+
