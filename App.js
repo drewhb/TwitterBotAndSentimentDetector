@@ -13,11 +13,12 @@ import Bottom from './Components/Bottompart';
 
 export default function App() {
 
-   console.log(GetUser("ElonMusk")); 
-   const [user, setUser] = useState([]); 
-    const confirmHandle = (InputText) =>{
+   //console.log(GetUser("ElonMusk")); 
+   var [user, setUser] = useState([]); 
+    var confirmHandle = (InputText) =>{
       //connect to twitter and pull the data to detect bot
       //Implement here
+
 
       //Alert when input is empt
       if(InputText.length < 1){
@@ -38,6 +39,7 @@ export default function App() {
        ])
     }
 
+    
   console.log(GetUser(user)); 
   return (      
     <View style={styles.container}>

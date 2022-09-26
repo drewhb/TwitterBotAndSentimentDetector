@@ -4,7 +4,7 @@ import { StyleSheet, Text, Image,TouchableOpacity, Button, View, TextInput} from
 
 //Allow user to enter account names
 export default function EnterAccount({confirmHandle}) {
-    const[defaultText, EnterText] = useState('');
+    var[defaultText, EnterText] = useState('');
 
     const redirect = (val) =>(
         EnterText(val)
