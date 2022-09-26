@@ -20,3 +20,5 @@ Currently our app can be run on iPhone and allows the user to enter a handle. Af
     - Since we couldn't successfully parse the JSON in react, this disallowed us from exersizing the other endpoints which required UserId as the main parameter
 
 We learned a lot about the various means of authentication when users use APIs which is happening under our noses every time we use our phones, which was super interesting, as well as different database technologies that allow an application to easily store and work with all of this data in code in a low cost and efficient way, and of course the frustrations of working in javascript. 
+
+We did build out the functionality to get the rest of the necessary Twitter data to run a post request to the Botometer API, which we intend on following through with in the weeks to come. 
